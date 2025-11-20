@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="서비스 기획자 최상훈의 포트폴리오입니다.">
+    <title>최상훈 | 서비스 기획자</title>
+    <style>
+        /* 1. 기본 설정 (Reset & Variables) */
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #2d3436;
+            --text-sub: #636e72;
+            --accent-color: #0984e3;
+            --accent-hover: #74b9ff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        /* 다크 모드 변수 */
+        body.dark-mode {
+            --bg-color: #1e1e1e;
+            --card-bg: #2d2d2d;
+            --text-main: #dfe6e9;
+            --text-sub: #b2bec3;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: var(--transition);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* 2. 레이아웃 (Layout) */
+        .container {
+            width: 100%;
+            max-width: 700px; /* 최대 너비 제한 */
+            margin-top: 60px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* 3. 헤더 및 다크모드 버튼 */
+        header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--text-sub);
+            color: var(--text-sub);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
+
+        /* 4. 메인 카드 디자인 */
+        .profile-card {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .intro-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 15px rgba(9, 132, 227, 0.3);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .job-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 5. 콘텐츠 섹션 */
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .section p {
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+            word-break: keep-all; /* 한글 줄바꿈 최적화 */
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-weight: 600;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* 6. 푸터 */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* 7. 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 8. 반응형 (모바일 최적화) */
+        @media (max-width: 600px) {
+            .profile-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            .container {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 헤더 (다크모드 토글) -->
+        <header>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+        </header>
+
+        <main class="profile-card">
+            <!-- 프로필 헤더 -->
+            <div class="intro-header">
+                <!-- 프로필 이미지 대신 이니셜 아바타 사용 (이미지가 있다면 img 태그로 교체 가능) -->
+                <div class="avatar">SH</div>
+                <h1>최상훈</h1>
+                <p class="job-title">Service Planner / PM</p>
+            </div>
+
+            <!-- 자기소개 섹션 -->
+            <div class="section">
+                <h2>About Me</h2>
+                <p>
+                    안녕하세요, 데이터와 사용자 경험을 연결하는 <strong>서비스 기획자 최상훈</strong>입니다.
+                </p>
+                <p>
+                    복잡한 문제를 단순하게 정의하고, 사용자가 직관적으로 이해할 수 있는 서비스를 만드는 것에 열정을 가지고 있습니다. 
+                    개발 및 디자인 팀과의 원활한 커뮤니케이션을 통해 아이디어를 현실로 구현하는 과정을 즐깁니다.
+                </p>
+            </div>
+
+            <!-- 경력/기술 섹션 (필요시 수정) -->
+            <div class="section">
+                <h2>Skills & Philosophy</h2>
+                <p>
+                    • <strong>Communication:</strong> 명확한 요구사항 정의 및 협업 툴(Jira, Confluence) 활용<br>
+                    • <strong>Data Driven:</strong> GA4, Amplitude를 활용한 데이터 기반 의사결정<br>
+                    • <strong>UX/UI:</strong> Figma를 활용한 와이어프레임 및 프로토타이핑
+                </p>
+            </div>
+
+            <!-- 연락처 링크 -->
+            <div class="contact-links">
+                <a href="mailto:example@email.com" class="btn btn-primary">Contact Me</a>
+                <a href="#" class="btn">Github</a>
+                <a href="#" class="btn">LinkedIn</a>
+            </div>
+
+            <!-- 푸터 -->
+            <footer>
+                <p>&copy; 2024 Choi Sang-hoon. All rights reserved.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // 다크모드 기능 스크립트
+        const toggleBtn = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // 1. 로컬 스토리지에서 테마 정보 확인
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            toggleBtn.innerText = '☀️ Light Mode';
+        }
+
+        // 2. 버튼 클릭 시 테마 전환
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                toggleBtn.innerText = '☀️ Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                toggleBtn.innerText = '🌙 Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+    </script>
+</body>
+</html>
